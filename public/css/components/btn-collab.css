@@ -1,0 +1,22 @@
+.wrap-btn-collab {
+  font-family: "Comfortaa", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.btn-collab {
+  padding: 20px 40px;
+  background-color: #f25a70;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 200ms linear;
+}
+
+.btn-collab:hover {
+  opacity: 1;
+}
