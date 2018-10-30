@@ -6,6 +6,6 @@ module.exports = {
         followSymlinks: false
     },
     env: {
-        "PORT": 6524,
+        "PORT": 6527,
     }
 }

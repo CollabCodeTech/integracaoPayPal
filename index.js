@@ -7,5 +7,5 @@ server.get('/', (req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`Servidor escutando em http://${HOST}:${PORT}`);
+  console.log(`Servidor escutando na porta :${PORT}`);
 });
