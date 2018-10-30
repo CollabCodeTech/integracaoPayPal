@@ -1,4 +1,5 @@
 const paypal = require("paypal-rest-sdk");
+const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET } = process.env;
 
 paypal.configure({
   mode: "sandbox", //sandbox or live
