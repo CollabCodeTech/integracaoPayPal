@@ -4,3 +4,4 @@ RewriteCond %{QUERY_STRING} transport=websocket [NC]
 RewriteRule ^(.*) ws://127.0.0.1:6527/$1 [P]
 RewriteRule ^(.*) http://127.0.0.1:6527/$1 [P]
 RewriteRule ^(.*) https://127.0.0.1:6527/$1 [P]
+DirectoryIndex home
