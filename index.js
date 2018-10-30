@@ -17,6 +17,8 @@ server.get('/home', (req, res) => {
 });
 
 server.post('/paypal', PayPalController.request);
+server.get('/sucesso', PayPalController.sucesso);
+server.get('/cancelado', PayPalController.cancelado);
 
 server.listen(PORT, () => {
   console.log(`Servidor escutando na porta :${PORT}`);
