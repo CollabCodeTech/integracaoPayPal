@@ -19,6 +19,27 @@ class PayPalController {
     }
   }
 
+  async callback(req, res) {
+    try {
+      const { paymentId, PayerID } = req.query;
+      const orderDetails = await (() =>
+        new Promise((resolve, reject) => {
+          paypal.payment.execute(
+            paymentId,
+            { payer_id: PayerID },
+            (err, payment) => {
+              if (err) return reject(err);
+              resolve(payment);
+            },
+          );
+        }))();
+      console.log(orderDetails);
+      res.redirect('/sucesso');
+    } catch (e) {
+      res.send(e);
+    }
+  }
+
   async sucesso(req, res) {
     res.send('Obrigado pelo seu pagamento');
   }
