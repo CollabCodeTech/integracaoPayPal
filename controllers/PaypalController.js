@@ -19,9 +19,17 @@ class PayPalController {
     }
   }
 
-  async callback(req, res) {
+  callback(req, res) {
+    res.render("resumo.html", { ...req.query });
+  }
+
+  cancel(req, res) {
+    res.status(200).send("cancel");
+  }
+
+  async confirm(req, res) {
     try {
-      const { paymentId, PayerID } = req.query;
+      const { paymentId, PayerID } = req.body;
       const orderDetails = await (() =>
         new Promise((resolve, reject) => {
           paypal.payment.execute(
@@ -34,17 +42,10 @@ class PayPalController {
           );
         }))();
       console.log(orderDetails);
-      res.redirect('/sucesso');
+      res.json({ msg: "Parabéns" });
     } catch (e) {
-      res.send(e);
+      res.status(e.httpStatusCode).send(e.response);
     }
-  }
-
-  async sucesso(req, res) {
-    res.send('Obrigado pelo seu pagamento');
-  }
-  async cancelado(req, res) {
-    res.send(':( Obrigado mesmo assim :(');
   }
 }
 
