@@ -9,11 +9,10 @@ class PayPalController {
           throw error;
         } else {
           console.log('Deu bom, deu feliz, pagamento criado');
-          console.log(payment);
+          res.send(payment)
         }
       },
     );
-    res.send('ok')
   }
 }
 
