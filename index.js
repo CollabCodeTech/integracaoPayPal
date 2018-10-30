@@ -2,9 +2,18 @@ const express = require('express');
 const server = express();
 const PayPalController = require('./controllers/PaypalController');
 const { PORT } = process.env;
+const nunjucks = require('nunjucks');
+
+server.use(express.static('./public'))
+
+nunjucks.configure('views', {
+  autoescape: true,
+  express: server,
+});
+
 
 server.get('/home', (req, res) => {
-  res.send('Olá');
+  res.render('home.html');
 });
 
 server.post('/paypal', PayPalController.request);
